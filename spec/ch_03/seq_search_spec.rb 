@@ -1,0 +1,16 @@
+require_relative '../../lib/ch_03/seq_search.rb'
+
+describe "seq_search" do
+	array = [3, 2, 8, 5, 4, 6]
+	context '[3, 2, 8, 5, 4, 6]の中から5を探す場合' do
+		it "'5は4番目です'をreturnする" do
+			expect(search_seq(array, 5)).to  eq '5は4番目です'
+		end
+	end
+	
+	context '[3, 2, 8, 5, 4, 6]の中から9を探す場合' do
+		it "'その値の配列は存在しません'をreturnする" do
+			expect(search_seq(array, 9)).to  eq 'その値の配列は存在しません'
+		end
+	end
+end
