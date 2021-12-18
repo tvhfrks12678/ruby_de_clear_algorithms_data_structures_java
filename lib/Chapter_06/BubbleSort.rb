@@ -8,13 +8,16 @@ module Chapter_06
 				array_max_num = sort_array.length.to_i - 1
 
 				(0..array_max_num).each do |i|
+					number_of_exchanges = 0
 					array_max_num.downto(i + 1) do |num|
 						number_to_compare = num - 1
 						if sort_array[number_to_compare] > sort_array[num]
 							sort_array[number_to_compare], sort_array[num] =
 							sort_array[num], sort_array[number_to_compare]
+							number_of_exchanges += 1
 						end
 					end
+					break if number_of_exchanges == 0
 				end
 				sort_array
 			end
