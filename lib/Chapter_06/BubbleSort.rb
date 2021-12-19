@@ -22,12 +22,36 @@ module Chapter_06
 				sort_array
 			end
 
+			def excute_limited_investigation_range(array)
+				sort_array = array.clone
+				array_max_num = sort_array.length.to_i - 1
+
+				sorted_num = 0
+
+				while sorted_num < array_max_num do
+					last = array_max_num
+
+					array_max_num.downto(sorted_num + 1) do |num|
+						number_to_compare = num - 1
+						if sort_array[number_to_compare] > sort_array[num]
+							sort_array[number_to_compare], sort_array[num] =
+							sort_array[num], sort_array[number_to_compare]
+							last = num
+						end
+					end
+
+					sorted_num = last
+				end
+				sort_array
+			end
+
 			def import_csv
 				dir_pwd = Dir.pwd 
 				file_path = "#{dir_pwd}/lib/Chapter_06/Array.csv"
 				data_list = CSV.read(file_path)
 				array = data_list[0].map { |n| n.to_i}
-				Chapter_06::BubbleSort.excute(array)
+				# Chapter_06::BubbleSort.excute(array)
+				Chapter_06::BubbleSort.excute_limited_investigation_range(array)
 			end
 		end
 	end
